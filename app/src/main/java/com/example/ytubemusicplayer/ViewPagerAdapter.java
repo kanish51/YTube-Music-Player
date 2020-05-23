@@ -30,11 +30,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter
         fragmentList.add(fragment);
         fragmentTitle.add(title);
     }
-    public void removeFragment(int index)
-    {
-        fragmentList.remove(index);
-        fragmentTitle.remove(index);
-    }
 
     @Nullable
     @Override
