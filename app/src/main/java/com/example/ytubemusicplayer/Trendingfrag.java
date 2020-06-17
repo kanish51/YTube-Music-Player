@@ -1,6 +1,7 @@
 package com.example.ytubemusicplayer;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -67,21 +68,23 @@ public class Trendingfrag extends Fragment
                 try {
                     JSONArray itemList=response.getJSONArray("items");
                     JSONObject obj,obj1;
-                    String title,thumbNail,channelName,link;
+                    String title,thumbNail,channelName,id;
                     for(int i=0;i<itemList.length();i++)
                     {
                         obj=itemList.getJSONObject(i);
                         obj1=obj.getJSONObject("snippet");
-                        link=obj.getString("id");
+                        id=obj.getString("id");
                         title=obj1.getString("title");
                         thumbNail=obj1.getJSONObject("thumbnails").getJSONObject("medium").getString("url");
+
                         channelName=obj1.getString("channelTitle");
-                        songs.add(new SongListItem(link,title,channelName,thumbNail));
+                        songs.add(new SongListItem(null,id,title,channelName,thumbNail,null));
                     }
                     Log.d("Size of SONGLIST",songs.size()+"");
                     adapter.notifyDataSetChanged();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(v.getContext(),"YAR",Toast.LENGTH_SHORT).show();
                     //Toast.makeText(v.getContext(), "Something went wrong!", Toast.LENGTH_LONG).show();
                     ((MainActivity)getActivity()).ProblemFunc();
 
@@ -90,6 +93,7 @@ public class Trendingfrag extends Fragment
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(v.getContext(),"YAR",Toast.LENGTH_SHORT).show();
                 //Toast.makeText(v.getContext(),error.getMessage(),Toast.LENGTH_LONG).show();
                 ((MainActivity)getActivity()).ProblemFunc();
             }
@@ -107,16 +111,16 @@ public class Trendingfrag extends Fragment
                     searchsongs.clear();
                     JSONArray itemList=response.getJSONArray("items");
                     JSONObject obj,obj1;
-                    String title,thumbNail,channelName,link;
+                    String title,thumbNail,channelName,id;
                     for(int i=0;i<itemList.length();i++)
                     {
                         obj=itemList.getJSONObject(i);
                         obj1=obj.getJSONObject("snippet");
-                        link=obj.getString("id");
+                        id=obj.getJSONObject("id").getString("videoId");
                         title=obj1.getString("title");
                         thumbNail=obj1.getJSONObject("thumbnails").getJSONObject("medium").getString("url");
                         channelName=obj1.getString("channelTitle");
-                        searchsongs.add(new SongListItem(link,title,channelName,thumbNail));
+                        searchsongs.add(new SongListItem(null,id,title,channelName,thumbNail,null));
                     }
                     Log.d("Size of Search SONGLIST",searchsongs.size()+"");
                     adapter2.notifyDataSetChanged();

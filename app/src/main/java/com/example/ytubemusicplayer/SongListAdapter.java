@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,15 +22,21 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.ViewHo
     ArrayList<SongListItem> records;
 
     OnItemClicked activity1;
+    //OnItemClickedAdd2Playlist activity2;
     public interface OnItemClicked
     {
-        void SongClicked(String vidId);
+        void SongClicked(SongListItem currSongItemObj);
     }
+    //public interface OnItemClickedAdd2Playlist
+    //{
+    //    void AddSongToPlaylist(SongListItem currSongItemObj);
+    //}
 
     public SongListAdapter(Context context, ArrayList<SongListItem> records)
     {
         this.records = records;
         activity1=(OnItemClicked) context;
+        //activity2=(OnItemClickedAdd2Playlist) context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
@@ -37,16 +44,28 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.ViewHo
 
         TextView tvTitle,tvChannelName;
         ImageView ivThumbnail;
+        ImageButton ibAddtoPlaylist;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle=itemView.findViewById(R.id.tvTitle);
             tvChannelName=itemView.findViewById(R.id.tvChannelName);
             ivThumbnail=itemView.findViewById(R.id.ivThumbnail);
+            ibAddtoPlaylist=itemView.findViewById(R.id.ibAddToPlaylist);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view)
                 {
-                    activity1.SongClicked(((SongListItem)view.getTag()).getLink());
+
+                    //if(view.getId()==R.id.ibAddToPlaylist)
+                    //{
+
+
+                    //}
+                    //else
+                    //{
+                        activity1.SongClicked(((SongListItem)view.getTag()));
+                    //}
+
                 }
             });
         }

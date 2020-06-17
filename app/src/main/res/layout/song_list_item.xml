@@ -14,12 +14,16 @@
             android:id="@+id/ivThumbnail"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/songthumb" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -27,13 +31,28 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/tvChannelName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="TextView" />
+
+            <ImageButton
+                android:id="@+id/ibAddToPlaylist"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="4dp"
+                android:background="@android:color/white"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/addplaylisticon" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

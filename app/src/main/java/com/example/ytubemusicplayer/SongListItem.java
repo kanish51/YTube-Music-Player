@@ -1,25 +1,40 @@
 package com.example.ytubemusicplayer;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 public class SongListItem
 {
-    public String link=null;
-    public String title=null;
-    public String channelName=null;
-    public String thumbnail=null;
+    private Uri url=null;
+    private String id=null;
+    private String title=null;
+    private String channelName=null;
+    private String thumbnail=null;
+    private Bitmap bitThumbnail=null;
 
-    public SongListItem(String link, String title, String channelName, String thumbnail) {
-        this.link = link;
+    public SongListItem(Uri url,String id, String title, String channelName,String thumbnail, Bitmap bitThumbnail) {
+        this.url = url;
+        this.id=id;
         this.title = title;
         this.channelName = channelName;
         this.thumbnail = thumbnail;
+        this.bitThumbnail=bitThumbnail;
     }
 
-    public String getLink() {
-        return link;
+    public Uri getUrl() {
+        return url;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setUrl(Uri url) {
+        this.url = url;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -38,6 +53,13 @@ public class SongListItem
         this.channelName = channelName;
     }
 
+    public Bitmap getBitThumbnail() {
+        return bitThumbnail;
+    }
+
+    public void setBitThumbnail(Bitmap bitThumbnail) {
+        this.bitThumbnail = bitThumbnail;
+    }
     public String getThumbnail() {
         return thumbnail;
     }
