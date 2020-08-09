@@ -57,9 +57,9 @@ public class Trendingfrag extends Fragment
         adapter=new SongListAdapter(getActivity(),songs);
         adapter2=new SongListAdapter(getActivity(),searchsongs);
         rvMain.setAdapter(adapter);
-        apiUrl="https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=30&regionCode=IN&videoCategoryId=10&key=AIzaSyBE_ZpdeQIs4LNfCCR24gtsw9jFvXiMhfY";
+        apiUrl="https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=30&regionCode=IN&videoCategoryId=10&key=YOUR_API_KEY";
         apiUrl1="https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&order=relevance&q=";
-        apiUrl2="&regionCode=IN&key=AIzaSyBE_ZpdeQIs4LNfCCR24gtsw9jFvXiMhfY";
+        apiUrl2="&regionCode=IN&key=YOUR_API_KEY";
         r= Volley.newRequestQueue(v.getContext());
         JsonObjectRequest j = new JsonObjectRequest(Request.Method.GET,apiUrl,null, new Response.Listener<JSONObject>() {
             @Override
